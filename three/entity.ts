@@ -1,7 +1,9 @@
 import { Vector3, Quaternion } from "three";
+import Component from "./component";
 
 export default class Entity {
-  name: string;
+  id: number;
+  name: any;
   components: any;
   position: Vector3;
   rotation: Quaternion;
@@ -9,6 +11,7 @@ export default class Entity {
   eventHandlers: any;
 
   constructor() {
+    this.id = 0;
     this.name = "";
     this.components = {};
     this.position = new Vector3();
@@ -26,7 +29,7 @@ export default class Entity {
     this.parent = parent;
   }
 
-  SetName(name: string) {
+  SetName(name: any) {
     this.name = name;
   }
 
@@ -34,7 +37,7 @@ export default class Entity {
     return this.name;
   }
 
-  GetComponent(name: string) {
+  GetComponent(name: any) {
     return this.components[name];
   }
 
@@ -54,7 +57,7 @@ export default class Entity {
     return this.rotation;
   }
 
-  FindEntity(name: string) {
+  FindEntity(name: any) {
     return this.parent.Get(name);
   }
 
